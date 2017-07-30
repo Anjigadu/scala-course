@@ -1,3 +1,3 @@
 class MyFirst {
-
+  println("Created")
 }
