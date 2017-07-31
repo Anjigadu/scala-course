@@ -173,3 +173,7 @@ println(valoareaDeSubK)
 val chestie:(Int, String) = 1 -> "unu"
 println(chestie)
 
+
+
+val acc = new ChecksumAccumulator
+println(acc.sum)
