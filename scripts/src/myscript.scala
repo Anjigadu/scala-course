@@ -51,3 +51,32 @@ for (arg <- ar) {
   println(arg)
 //  arg = "x" // for loop elements are implicitly "val"
 }
+
+
+val greetStrings = new Array[String](3) // in Java: = new String[3]
+greetStrings(0) = "a"
+greetStrings(1) = "b"
+greetStrings(2) = "c"
+greetStrings.update(2, "c") // scala compile translates the above line in this
+// Array este mutabil (ii poti schimba starea interioara a unei anumite instante)
+
+for (e <- greetStrings) println(e)
+
+for (i <- 0 to 2) {
+//  println(greetStrings(i))
+  println(greetStrings.apply(i)) // scala compile translates the above line in this
+}
+
+//apply(index:Int): T
+
+val ss:String = "Kk"
+ss.toLowerCase()
+val ch = ss(2)
+
+
+// String[] altArray = new String[] {"one", "two", "three"}
+val altArray:Array[String] = Array("one", "two", "three")
+//                          = Array.apply("one", "two", "three") // scala compiler traduce orice "invocare"
+// de clasa intr-o metoda 'statica' apply pe Companion Object-ul acelei clase
+
+//val primaList
