@@ -69,14 +69,67 @@ for (i <- 0 to 2) {
 
 //apply(index:Int): T
 
-val ss:String = "Kk"
+val ss:String = "Kka"
 ss.toLowerCase()
-val ch = ss(2)
+val ch:Char = ss(2) //echivalent cu ss.apply(2)
 
 
 // String[] altArray = new String[] {"one", "two", "three"}
 val altArray:Array[String] = Array("one", "two", "three")
 //                          = Array.apply("one", "two", "three") // scala compiler traduce orice "invocare"
 // de clasa intr-o metoda 'statica' apply pe Companion Object-ul acelei clase
+println(altArray)
 
-//val primaList
+val primaLista:List[String] = List("one", "two", "three")
+println(primaLista)
+
+val listaGoala = Nil
+println(listaGoala)
+
+val oListaCu2Elem = (1 :: (2 :: Nil))
+val oListaCu2Elem2 = 1 :: 2 :: Nil
+val oListaCu2Elem3 = Nil.::(2).::(1)
+
+// 1 + 2 == 1.+(2) // toti operatorii/metodele  din scala sunt
+                // asociativi la stanga. La dreapta sunt doar cei care se temrmina cu :
+
+// "abc".indexOf("a") == ("abc" indexOf "a")
+// "abc".indexOf("a",1) == ("abc" indexOf ("a", 1)) // operatorii sunt metode si vice versa.
+//!! Atentie la asociativitate
+
+println(oListaCu2Elem(1))
+
+// in java .add(3) . sau NU
+val oNouaListaCu3Elem = oListaCu2Elem :+ 3
+
+println(oListaCu2Elem)
+println(oNouaListaCu3Elem)
+
+println("primul element " + oListaCu2Elem.head)
+println(", restu... " + oListaCu2Elem.tail)
+
+// .stream().anyMatch(i -> i % 2 == 0)
+println("has even number: " + oListaCu2Elem.exists(i => i % 2 == 0))
+
+// .stream().filter(i -> i % 2 == 1)
+println("odd numbers: " + oNouaListaCu3Elem.filter(i => i % 2 == 1).mkString("-"))
+
+println("args with spaces : " + ar.mkString(" "))
+
+println("Sorted args: " + ar.sortWith((s1,s2) => s1 < s2).mkString("|"))
+
+//x == y
+//  x<y = false
+//  y<x = false
+//
+//x < y
+//  x<y = true
+//  y<x = false
+//
+//x > y
+//  x<y = false
+//  y<x = true
+
+//compare(a:String, b:String, lt:func) {
+//  if ()
+//}
