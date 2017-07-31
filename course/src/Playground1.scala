@@ -1,3 +1,3 @@
 object Playground1 extends App {
-  println("Hello Scala!")
+  println("Hello Scala !")
 }
