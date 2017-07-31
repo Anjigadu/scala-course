@@ -1,3 +1,4 @@
+import scala.collection.mutable
 
 println("hello Scala!")
 
@@ -133,3 +134,31 @@ println("Sorted args: " + ar.sortWith((s1,s2) => s1 < s2).mkString("|"))
 //compare(a:String, b:String, lt:func) {
 //  if ()
 //}
+
+
+
+// Tuple
+val pair = (11, "eleven")
+println("first component " + pair._1)
+
+// set
+val set:scala.collection.immutable.Set[String] = Set("a","b","a","c","d","e","f")
+println(set)
+
+val nouSet = set + "Gigi"
+println(nouSet)
+
+var unSetReassignabil = Set(1,2,3)
+unSetReassignabil += 4 // se re-asigneaza VARiabila, ca mai jos
+unSetReassignabil = unSetReassignabil + 5
+
+println(unSetReassignabil)
+
+println("Contine pe 5? " + unSetReassignabil.contains(5))
+println("Contine pe f? " + set("f")) // metoda .apply din set intoarce true sau false, e ~= .contains()
+
+val unSetMutabil  = mutable.Set("X","Y","Z") // final Set<String> unSetMutabile = new HashSet<>(..)
+unSetMutabil += "T" // Java-like. WTF!! += e o metoda in cazul asta!!
+println(unSetMutabil)
+
+
