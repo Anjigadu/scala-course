@@ -161,4 +161,15 @@ val unSetMutabil  = mutable.Set("X","Y","Z") // final Set<String> unSetMutabile 
 unSetMutabil += "T" // Java-like. WTF!! += e o metoda in cazul asta!!
 println(unSetMutabil)
 
+val mapaMea:Map[String, Int] = Map("k" -> 76, "j" -> 78) // -> este o metoda disponibila pe ORICE obiect din Scala
+val mapaMea2 = mapaMea + ("a" -> 32)
+val newEntry:(String, Int) = ("b", 33)
+val mapaMea3 = mapaMea2 + newEntry
+//val mapaMea3 = mapaMea2 + ("b", 33) // asta nu merge, pt ca Scala cauta o metoda "+" care ia 2 parametrii, String, Int
+val mapaMea4 = mapaMea2 + (("b", 33)) // dar, surpriza, Asta MERGE!!
+val valoareaDeSubK = mapaMea("k") // Map.apply(key) intoarce valoarea
+println(valoareaDeSubK)
+
+val chestie:(Int, String) = 1 -> "unu"
+println(chestie)
 
