@@ -25,12 +25,29 @@ class Rational(numarator2:Int, numitor2:Int) {
       val sig = math.signum(numitor)
       s"${numarator * sig} / ${numitor * sig}"
     }
+
+  override def equals(obj: scala.Any): Boolean =
+    if (!obj.isInstanceOf[Rational]) false
+  else {
+    val other = obj.asInstanceOf[Rational]
+    (this.numitor, this.numarator) == (other.numitor, other.numarator)
+  }
+
+  override def hashCode(): Int = (numitor, numarator).##
 }
 
 object Rational {
   def apply(numarator: Int, numitor: Int): Rational = new Rational(numarator, numitor)
   def apply(numarator: Int): Rational = new Rational(numarator)
 
+}
+
+class NewClass(p1:Int) {
+  val p1Field = p1
+  println(p1)
+}
+
+class NewClass2(val p1Field:Int) {
 }
 
 
