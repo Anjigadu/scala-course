@@ -1,3 +1,5 @@
+import java.io.PrintStream
+
 import scala.io.Source
 
 object Chapter8_Functions extends App {
@@ -69,5 +71,55 @@ object Chapter8_Functions extends App {
 
 //  val lt = _ < _ // nu compileaza pentru ca Scala nu stie ce tip au _-rile
   val lt = (_:Int) < (_:Int)
+  val ltAcelasi: (Int, Int) => Boolean = (_:Int) < (_:Int)
+  val ltAcelasiMaiScurt: (Int, Int) => Boolean = _ < _
+
+  /// LUNCH BREAK -----------------------
+
+  def sum(a: Int, b: Int, c:Int): Int = a + b + c
+
+//  val adunareFaraTip = sum // nu merge pentru ca Scala crede ca vreau sa invoc metoda sum fara parametrii - si asta nu se poate !
+  val adunare: (Int,Int,Int) => Int = sum
+  val sase = sum (1,2,3)
+  val aplicarePartiala: (Int,Int,Int)=>Int = sum _  // underscore-ul tine locul unei intregi LISTE de parametrii
+  // ca mai sus, se considera ca aplicarePartiala este o functie, care aici are ca argument aceasi lista de param
+  println(aplicarePartiala)
+
+  val sumaCu3: Int => Int = sum(1, _, 2)
+  val sumaCu3Bis = sum(1, _:Int, 2)
+  println(sumaCu3(5))
+
+  def sumaCuLong(a:Int, b:Long):Long = a+b
+  def methodReference = sumaCuLong _
+  def methodReference2 = sumaCuLong(_:Int, _:Long)
+  def methodReference3: (Int, Long) => Long = sumaCuLong(_, _)
+  //toate 4 de mai sus au aceeasi semnatura !!!
+
+  ////////////// acum aplica "UITARE" ///////////////////
+
+  val arr = Array(1,2,3)
+  var sum = 0
+//  for (e <- arr) sum += e  // asta e old school'
+//  arr.foreach(e => sum += e)
+  arr.foreach(sum += _)
+  println(s"suma: $sum")
+
+  ////////// named params, default params
+
+  def sumeaza(numere: Int*) = numere.sum
+
+  def speed(distance:Float, time:Float):Float = distance/time
+  println(speed(100, 10))
+  println(speed(distance=100, time=10))
+  println(speed(time=10, distance=100))
+
+  def printTime(out: PrintStream = System.out, divizor: Int) =
+    out.println(s"Current time is ${System.currentTimeMillis()/divizor}")
+
+  printTime(System.err, 1)
+  //printTime(1000) // NU compileaza ca nu e nici o metoda cu Int ca prim parametru
+  printTime(divizor=1000)
+
+
 
 }
