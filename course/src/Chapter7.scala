@@ -1,6 +1,7 @@
 import java.io.File
 
 import scala.io.Source
+import scala.runtime.RichInt
 
 object Chapter7 extends App {
 
@@ -66,5 +67,22 @@ object Chapter7 extends App {
 
   println(ceoFii.mkString(","))
 
-//  filesHere.foreach(println)
+
+
+
+  for (i <- 10 to (1,-1)) println(s"Pasul $i")
+  for (i <- 10 to (step= -1, end=1)) println(s"Pasul $i")
+  for (i <- 10.to(end=1, step= -1)) println(s"Pasul $i")
+
+  //  filesHere.foreach(println)
+
+  /// definirea unui operator nou pe int "downto"
+  class MyRichInt(val i:Int) {
+    def downto(j:Int):Range = i to (j, -1)
+  }
+  implicit def intToMyRichInt(i:Int):MyRichInt = new MyRichInt(i)
+  for (i <- 10 downto 1) println(s"Pasul $i")
+
+
+  //////////////
 }
