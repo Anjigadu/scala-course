@@ -85,4 +85,13 @@ object Chapter7 extends App {
 
 
   //////////////
+
+  val s = "one"
+  val num = s match {
+    case "one" => 1 // NU EXISTA BREAK, NU CASCADEAZA
+    case "two" => 2
+    case _ => Int.MaxValue // default: in Java
+  }
+
+  println(num)
 }
