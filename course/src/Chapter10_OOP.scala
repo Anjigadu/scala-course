@@ -2,12 +2,22 @@ abstract class Element {
   def contents: Array[String] // tine continutul linie cu linie
   def height(): Int = contents.length
   def width: Int = if (contents.isEmpty) 0 else contents(0).length
+
+  val name:String
 }
 
-class ArrayElement(cons: Array[String]) extends Element {
-  override val contents: Array[String] = cons
-  // override este OBLIGATORIU DACA suprascrii o metoda. Optional Daca o IMPLEMENTEZI
+// override este OBLIGATORIU DACA suprascrii o metoda. Optional Daca o IMPLEMENTEZI
+
+class ArrayElement(val contents: Array[String]) extends Element {
+  // implementing an abstract function fara () cu o variabila/valoare !!!!
+  // "Uniform access principle" inseamna ca implementarea unei fct abstract fara () poate fi un camp.
+  // DPDV al clientului nu ar trebui sa conteze
+
+  val name = "ArrayElem"
+  //def name = "ArrayElem" -- NU poti implementa un VAL ABSTRACT cu un DEF
+  // dar poti implementa un DEF ABSTRACT cu un VAL
 }
+
 
 
 object Chapter10_OOP extends App {
