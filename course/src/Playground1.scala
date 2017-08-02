@@ -51,7 +51,6 @@ object Playground1 extends App {
   p.fullName
 }
 
-
 class ClasaCuGetteriJavaStyle {
   private var camp:String = _
   def getCamp:String = camp
