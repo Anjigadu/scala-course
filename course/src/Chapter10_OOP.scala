@@ -10,10 +10,10 @@ abstract class Element {
   def above(other: Element):Element = new ArrayElement(contents ++ other.contents)
   def beside(other: Element):Element = {
     require(other.contents.length == contents.length)
-    val gunoi = new ArrayBuffer[String]
-    for (i <- 0 until contents.length) {
-      gunoi += contents(i) + other.contents(i)
-    }
+    val gunoi =
+      for (pair <- contents zip other.contents) yield {
+        pair._1 + pair._2
+      }
     new ArrayElement(gunoi.toArray)
   }
 
@@ -60,7 +60,6 @@ class UniformElement(ch:Char, width:Int, height: Int) extends Element {
 
 object Chapter10_OOP extends App {
   val primuElem = new ArrayElement(Array("abc"))
-  println(primuElem.initialContent)
 //  println(primuElem.contents()) // nu compileaza pt ca functia ai declarat-o FARA ()
 
   // DAR daca ai declarat-o cu (), poti sa o apelezi si CU si FARA :
@@ -79,9 +78,12 @@ object Chapter10_OOP extends App {
   val ue = new UniformElement('*', 3, 2)
   println(ue)
 
-  val steag = new LineElement("rosu") above new LineElement("galben") above new LineElement("albastru")
-  println(steag)
+  val steagRO = new LineElement("rosu") above new LineElement("galben") above new LineElement("albastru")
+  println(steagRO)
+  val steagFR = new LineElement("rosu") above new LineElement("maro") above new LineElement("albastru")
 
+  val steaguri = steagRO beside steagFR
+  println(steaguri)
 
   val strings = Array("rosu", "galben")
 
@@ -91,6 +93,11 @@ object Chapter10_OOP extends App {
 //
 //  val lastOrder = orderList.maxBy(_.creationDate)
 
+
+  val stringList = Array("a","b","c")
+  val intList = Array(1,2,3)
+
+  println((stringList zip intList).mkString("\n"))
 }
 
 
