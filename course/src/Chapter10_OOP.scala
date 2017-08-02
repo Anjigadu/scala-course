@@ -1,19 +1,27 @@
 import Chapter10_OOP.strings
 
+import scala.collection.mutable.ArrayBuffer
+
 abstract class Element {
   def contents: Array[String] // tine continutul linie cu linie
   def height(): Int = contents.length
   def width: Int = if (contents.isEmpty) 0 else contents(0).length
   val name:String
-  def above(other: Element) = new ArrayElement(contents ++ other.contents)
+  def above(other: Element):Element = new ArrayElement(contents ++ other.contents)
+  def beside(other: Element):Element = {
+    require(other.contents.length == contents.length)
+    val gunoi = new ArrayBuffer[String]
+    for (i <- 0 until contents.length) {
+      gunoi += contents(i) + other.contents(i)
+    }
+    new ArrayElement(gunoi.toArray)
+  }
 
   override def toString: String = contents.mkString("\n")
 }
 
 // override este OBLIGATORIU DACA suprascrii o metoda. Optional Daca o IMPLEMENTEZI
-class ArrayElement(val initialContent: Array[String]) extends Element {
-
-  //cod
+class ArrayElement(initialContent: Array[String]) extends Element {
   override val contents:Array[String] = uniformPad(initialContent)
 
   def uniformPad(lines:Array[String]):Array[String] = {
