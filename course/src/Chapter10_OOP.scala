@@ -20,10 +20,13 @@ class ArrayElement(val initialContent: Array[String]) extends Element {
     val longestLine:String = lines.maxBy(_.length)
     val maxLength:Int = longestLine.length
 
-    for (line <- lines;
-      halfNoSpaces = (maxLength - line.length)/2;
-      halfPadding = " " * halfNoSpaces
-    ) yield halfPadding + line + halfPadding
+    def padLine(line: String) = {
+      val halfNoSpaces = (maxLength - line.length) / 2
+      val halfPadding = " " * halfNoSpaces
+      halfPadding + line + halfPadding
+    }
+
+    for (line <- lines) yield padLine(line)
   }
 
   // implementing an abstract function fara () cu o variabila/valoare !!!!
