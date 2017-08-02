@@ -10,11 +10,9 @@ abstract class Element {
   def above(other: Element):Element = new ArrayElement(contents ++ other.contents)
   def beside(other: Element):Element = {
     require(other.contents.length == contents.length)
-    val gunoi =
-      for (pair <- contents zip other.contents) yield {
-        pair._1 + pair._2
-      }
-    new ArrayElement(gunoi.toArray)
+    val shmecher = for ((a, b) <- contents zip other.contents) yield a + b
+    new ArrayElement(shmecher
+    )
   }
 
   override def toString: String = contents.mkString("\n")
