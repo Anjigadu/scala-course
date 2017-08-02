@@ -1,11 +1,9 @@
 object Playground1 extends App {
-
   val acc = new ChecksumAccumulator
 
   println("Hello first main()")
 
   acc.add(1);  acc.add(2) // daca vreau sa ingramadesc doua instr pe o sg linie, atunci e NEVOIE de ;
-
 
   println(acc.checksum)
 
