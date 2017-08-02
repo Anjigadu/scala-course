@@ -2,7 +2,6 @@ abstract class Element {
   def contents: Array[String] // tine continutul linie cu linie
   def height(): Int = contents.length
   def width: Int = if (contents.isEmpty) 0 else contents(0).length
-
   val name:String
 }
 
@@ -16,6 +15,12 @@ class ArrayElement(val contents: Array[String]) extends Element {
   val name = "ArrayElem"
   //def name = "ArrayElem" -- NU poti implementa un VAL ABSTRACT cu un DEF
   // dar poti implementa un DEF ABSTRACT cu un VAL
+}
+
+class LineElement(line:String) extends ArrayElement(Array(line)) {
+  override val name = "LineElem" // In scala final opreste override. Atat!
+  override def width = line.length
+  override def height = 1
 }
 
 
