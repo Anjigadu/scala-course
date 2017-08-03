@@ -1,3 +1,5 @@
+package matematica
+
 class Rational(numarator2:Int, numitor2:Int) {
   // cod care ruleaza in constructorul default
 
@@ -28,10 +30,10 @@ class Rational(numarator2:Int, numitor2:Int) {
 
   override def equals(obj: scala.Any): Boolean =
     if (!obj.isInstanceOf[Rational]) false
-  else {
-    val other = obj.asInstanceOf[Rational]
-    (this.numitor, this.numarator) == (other.numitor, other.numarator)
-  }
+    else {
+      val other = obj.asInstanceOf[Rational]
+      (this.numitor, this.numarator) == (other.numitor, other.numarator)
+    }
 
   override def hashCode(): Int = (numitor, numarator).##
 }
@@ -42,33 +44,3 @@ object Rational {
 
 }
 
-class NewClass(p1:Int) {
-  val p1Field = p1
-  println(p1)
-}
-
-class NewClass2(val p1Field:Int) {
-}
-
-
-object RationalPlay extends App {
-  implicit def intToRationalCaremaz(i:Int): Rational = Rational(i)
-  val oneHalf = new Rational(1, 2)
-  val one = new Rational(2, 2)
-//  val inf = new Rational(1, 0)
-  println(oneHalf)
-
-  val twoThirds = new Rational(2, 3)
-  println(oneHalf + twoThirds)
-  println(oneHalf + oneHalf)
-
-  println(new Rational(1, 6) * new Rational(3, 1))
-  println((oneHalf + twoThirds) * oneHalf)
-  println(oneHalf * new Rational(2))
-  println(new Rational(-1,2))
-  println(new Rational(1,-2))
-  println(Rational.apply(-1,-2))
-  println(Rational(-1,-2))
-  println(Rational(1, 2) * 2)
-  println(2 * Rational(1, 2))
-}
