@@ -3,30 +3,26 @@ import org.scalatest.{BeforeAndAfter, FunSuite}
 import scala.collection.mutable.ArrayBuffer
 
 abstract class Movie(val title: String){
-   def computePrice(daysRented: Int):Double
+  def computePrice(daysRented: Int):Double
+  def computeBonus(daysRented: Int): Int = 1
 }
-
 
 class RegularMovie(title:String) extends Movie(title) {
   def computePrice(daysRented: Int) = if (daysRented > 2) 2 + (daysRented - 2) * 1.5 else 2
-
 }
+
 class ChildrenMovie(title:String) extends Movie(title){
   def computePrice(daysRented:Int) = if (daysRented > 3) 1.5 + (daysRented - 3) * 1.5 else 1.5
 }
 
 class NewReleaseMovie(title:String) extends Movie(title){
   def computePrice(daysRented: Int) = daysRented * 3
+  override def computeBonus(daysRented: Int): Int = if (daysRented > 1) 2 else 1
 }
 
 class Rental(val movie: Movie, val daysRented: Int){
-
   def computePrice:Double = this.movie.computePrice(this.daysRented)
-
-   def computeBonus(): Int = movie match {
-     case m : NewReleaseMovie if this.daysRented > 1 => 2
-     case _ => 1
-  }
+  def computeBonus(): Int = this.movie.computeBonus(this.daysRented)
 }
 
 class Customer(private val name: String) {
