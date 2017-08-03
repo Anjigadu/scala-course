@@ -1,5 +1,5 @@
 import java.util.List;
-import static java.lang.System.currentTimeMillis
+import static java.lang.System.currentTimeMillis;
 import java.util.regex.*;
 
 public class Haha {
@@ -23,5 +23,11 @@ public class Haha {
     public static void main(String[] args) {
 //        List<String> s;
 //        s.stream()
+    }
+
+
+    {
+//        newEntity.setCeva(oldEntity.getCeva());
+//        newEntity.setDate(MapperUtil.parseDate(oldEntity.getDateAsString()));
     }
 }

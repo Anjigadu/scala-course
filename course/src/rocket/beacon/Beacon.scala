@@ -38,7 +38,7 @@ class Beacon {
 
   def interzisJavaUtilDateDeTot = {
     import java.util.{Date => _} // ascund o clasa dintr-un pachet..
-    val dataRea = new Date()
+//    val dataRea = new Date()
   }
 
   new Rocket
