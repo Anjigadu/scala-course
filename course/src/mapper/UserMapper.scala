@@ -21,7 +21,7 @@ object UserMapper extends App {
   println(toDto(new User).creationDate)
 }
 
-object MapperUtils {
+private[mapper] object MapperUtils {
   def dateToString(date: Date) = {
     new SimpleDateFormat("yyyy-MM-dd").format(date)
   }
