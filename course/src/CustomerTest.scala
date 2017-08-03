@@ -4,9 +4,9 @@ class CustomerTest extends FunSuite with BeforeAndAfter {
 
   test("this is called a 'characterization test' ") {
     val customer = new Customer("John Doe")
-    customer.addRental(new Rental(new Movie("Star Wars", MovieType.NEW_RELEASE), 6))
-    customer.addRental(new Rental(new Movie("Sofia", MovieType.CHILDRENS), 7))
-    customer.addRental(new Rental(new Movie("Inception", MovieType.REGULAR), 5))
+    customer.addRental(new Rental(new NewReleaseMovie("Star Wars"), 6))
+    customer.addRental(new Rental(new ChildrenMovie("Sofia"), 7))
+    customer.addRental(new Rental(new RegularMovie("Inception"), 5))
     val expected ="Rental Record for John Doe\n" +
       "\tStar Wars\t18.0\n" +
       "\tSofia\t7.5\n" +

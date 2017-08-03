@@ -2,29 +2,30 @@ import org.scalatest.{BeforeAndAfter, FunSuite}
 
 import scala.collection.mutable.ArrayBuffer
 
-class Movie(val title: String, val movieType: MovieType.Value)
-object MovieType extends Enumeration{
-  val CHILDRENS = Value
-  val REGULAR = Value
-  val NEW_RELEASE = Value
+abstract class Movie(val title: String){
+   def computePrice(daysRented: Int):Double
+}
+
+
+class RegularMovie(title:String) extends Movie(title) {
+  def computePrice(daysRented: Int) = if (daysRented > 2) 2 + (daysRented - 2) * 1.5 else 2
+
+}
+class ChildrenMovie(title:String) extends Movie(title){
+  def computePrice(daysRented:Int) = if (daysRented > 3) 1.5 + (daysRented - 3) * 1.5 else 1.5
+}
+
+class NewReleaseMovie(title:String) extends Movie(title){
+  def computePrice(daysRented: Int) = daysRented * 3
 }
 
 class Rental(val movie: Movie, val daysRented: Int){
-  def computePrice:Double = {
 
-    this.movie.movieType match {
-      case MovieType.REGULAR =>
-        if (this.daysRented > 2) 2 + (this.daysRented - 2) * 1.5 else 2
-      case MovieType.NEW_RELEASE =>
-        this.daysRented * 3
-      case MovieType.CHILDRENS =>
-        if (this.daysRented > 3) 1.5 + (this.daysRented - 3) * 1.5 else 1.5
-      case _ => throw new IllegalArgumentException("nu e voie!")
-    }
-  }
+  def computePrice:Double = this.movie.computePrice(this.daysRented)
 
-   def computeBonus(): Int = {
-    if ((this.movie.movieType == MovieType.NEW_RELEASE) && this.daysRented > 1) 2 else 1
+   def computeBonus(): Int = movie match {
+     case m : NewReleaseMovie if this.daysRented > 1 => 2
+     case _ => 1
   }
 }
 
