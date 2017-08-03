@@ -1,5 +1,6 @@
 package mapper
 
+import MapperUtils.dateToString
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -13,7 +14,7 @@ object UserMapper extends App {
 
   def toDto(entity: User): UserDto = {
     val dto = new UserDto
-    dto.creationDate = MapperUtils.dateToString(entity.date) //de formatat
+    dto.creationDate = dateToString(entity.date) //de formatat
     dto
   }
 
