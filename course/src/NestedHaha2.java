@@ -18,4 +18,13 @@ public class NestedHaha2 {
         Inner innerDeInstanta = haha.new Inner();
         Nested nested = new Nested();
     }
+
+    static class Incercare {
+        long x;
+        {
+            System.out.println("Calulez");
+                x = System.currentTimeMillis();
+        }
+    }
+
 }
