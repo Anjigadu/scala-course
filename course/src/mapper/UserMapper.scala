@@ -11,13 +11,13 @@ class UserDto {
   var creationDate:String = _
 }
 object UserMapper extends App {
+  implicit def conversie(date:Date):String = dateToString(date)
 
   def toDto(entity: User): UserDto = {
     val dto = new UserDto
-    dto.creationDate = dateToString(entity.date) //de formatat
+    dto.creationDate = entity.date //de formatat
     dto
   }
-
 
   println(toDto(new User).creationDate)
 }
