@@ -49,6 +49,17 @@ object Playground1 extends App {
 
   val p = new Person("John","Doe")
   p.fullName
+
+
+  val someCollection = List(1,2,3)
+  someCollection.filter(x=>Set(1,2,3).contains(x))  // creeaza 3 seturi
+  val valoriPosibile = Set(1,2,3)
+  someCollection.filter(x=> {
+    println("o data")
+    valoriPosibile.contains(x)
+  })  // creeaza 3 seturi
+
+
 }
 
 class ClasaCuGetteriJavaStyle {
