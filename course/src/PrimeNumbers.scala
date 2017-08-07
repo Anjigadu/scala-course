@@ -3,7 +3,7 @@ object PrimeNumbers extends App {
 
   def nrDivizori(num: Int): Int = {
     var count = 0
-    for (i <- 2 to num) {
+    for (i <- 2 until num) {
       if (num % i == 0) count += 1
       if (count > 2) return count
     }
@@ -11,7 +11,7 @@ object PrimeNumbers extends App {
   }
 
   def isPrim(num: Int): Boolean = {
-    nrDivizori(num) == 1
+    nrDivizori(num) == 0
   }
 
   def nrPrime(num: Int): Int = {
