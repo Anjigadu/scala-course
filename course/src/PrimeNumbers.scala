@@ -12,13 +12,9 @@ object PrimeNumbers extends App {
 
 
   def nrPrime(num: Int): Int = {
-    var count = 0
-    for (i <- 2 to num) {
-      if (isPrim(i)) {
-        count += 1
-        println(i)
-      }
-    }
+    val numbers = (2 to num).filter(isPrim)
+    numbers.foreach(println)
+    val count  = numbers.length
     println(s"Pana la $num sunt $count numere prime.")
     count
   }
