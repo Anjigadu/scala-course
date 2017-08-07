@@ -147,9 +147,7 @@ case class OPereche(valoare:Valoare) extends Formatie[OPereche](1) {
 case class DouaPerechi(valoare1:Valoare, valoare2:Valoare) extends Formatie[DouaPerechi](2) {
   def maxVal = valoare1.index max valoare2.index
   def minVal = valoare1.index min valoare2.index
-  override def specificOrdering: Ordering[DouaPerechi] = {
-    Ordering.by((_:DouaPerechi).maxVal) orElse Ordering.by(_.minVal)
-  }
+  override def specificOrdering: Ordering[DouaPerechi] = Ordering.by((x:DouaPerechi) => (x.maxVal, x.minVal))
 }
 case class TreiBucati(valoare: Valoare) extends Formatie[TreiBucati](3) {
   override def specificOrdering: Ordering[TreiBucati] = Ordering.by(_.valoare)
