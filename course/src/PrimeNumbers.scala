@@ -1,18 +1,13 @@
 object PrimeNumbers extends App {
 
 
-  def nrDivizori(num: Int): Int = {
-    var count = 0
+  def isPrim(num: Int): Boolean = {
     for (i <- 2 until num) {
-      if (num % i == 0) count += 1
-      if (count > 2) return count
+      if (num % i == 0) return false
     }
-    count
+    true
   }
 
-  def isPrim(num: Int): Boolean = {
-    nrDivizori(num) == 0
-  }
 
   def nrPrime(num: Int): Int = {
     var count = 0
