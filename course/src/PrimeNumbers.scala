@@ -2,12 +2,7 @@ object PrimeNumbers extends App {
 
 
   private def isPrim(num: Int): Boolean = {
-    def isPrimeVsNrFrom(div: Int): Boolean = {
-      if (div >= num) true
-      else if (num % div == 0) false
-      else isPrimeVsNrFrom(div + 1)
-    }
-    isPrimeVsNrFrom(2)
+    (2 until num).forall(num % _ != 0)
   }
 
   private def nrPrimePanaLa(num: Int) = {
