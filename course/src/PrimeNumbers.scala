@@ -2,10 +2,12 @@ object PrimeNumbers extends App {
 
 
   def isPrim(num: Int): Boolean = {
-    for (i <- 2 until num) {
-      if (num % i == 0) return false
+    def isPrimeVsNrFrom(div: Int): Boolean = {
+      if (div >= num) true
+      else if (num % div == 0) false
+      else isPrimeVsNrFrom(div + 1)
     }
-    true
+    isPrimeVsNrFrom(2)
   }
 
 
