@@ -114,7 +114,7 @@ case class Mana (carti:Set[Carte]) extends Ordered[Mana]{
 
 object Mana {
   def apply(carti: Carte*): Mana = new Mana(carti.toSet)
-  implicit def apply(s:String) = new Mana(s.split("-").map(Carte.convertFromString(_)).toSet)
+  implicit def apply(s:String) = new Mana(s.split("-").map(Carte.convertFromString).toSet)
 }
 abstract class Formatie[ME <: Formatie[ME]](val rank: Int) extends Ordered[Formatie[_]] {
   override final def compare(that: Formatie[_]): Int =
@@ -127,7 +127,7 @@ abstract class Formatie[ME <: Formatie[ME]](val rank: Int) extends Ordered[Forma
 }
 
 final class CompositeOrdering[T]( val ord1: Ordering[T], val ord2: Ordering[T] ) extends Ordering[T] {
-  def compare( x: T, y: T ) = {
+  def compare( x: T, y: T ):Int = {
     val comp = ord1.compare( x, y )
     if ( comp != 0 ) comp else ord2.compare( x, y )
   }
