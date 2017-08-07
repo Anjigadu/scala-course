@@ -59,6 +59,10 @@ object Playground1 extends App {
     valoriPosibile.contains(x)
   })  // creeaza 3 seturi
 
+  import scala.math.Ordered.orderingToOrdered
+
+  val sx: Ordering[Int] = null
+  println((1,"a") compareTo (2,"b"))
 
 }
 
